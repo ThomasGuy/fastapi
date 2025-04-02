@@ -1,0 +1,9 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#0dc40d",
+    "titleBar.inactiveBackground": "#18e01873",
+    "titleBar.activeForeground": "#06489e",
+    "titleBar.inactiveForeground": "#e6e5e5af"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

@@ -1,0 +1,11 @@
+# python source files
+**/__pycache__
+
+# enviroments
+.venv
+
+# images
+src/images/*.*
+
+# database
+*.db
