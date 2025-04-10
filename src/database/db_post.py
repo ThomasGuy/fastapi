@@ -1,10 +1,13 @@
 from datetime import datetime, timezone
+from pathlib import Path
 
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
 from src.database.models.post import Post
 from src.schemas import PostBase
+
+imgFolder = Path.cwd() / 'src' / 'images'
 
 
 def create_post(request: PostBase, db: Session):
@@ -22,7 +25,8 @@ def create_post(request: PostBase, db: Session):
 
 
 def get_all(db: Session):
-    return db.query(Post).all()
+    data = db.query(Post).all()
+    return sorted(data, key=lambda p: p.timestamp, reverse=True)  # type: ignore
 
 
 def delete_post(id: int, db: Session, user_id: str):
@@ -38,4 +42,9 @@ def delete_post(id: int, db: Session, user_id: str):
         )
     db.delete(post)
     db.commit()
+
+    if post.image_url_type == 'relative':  # type: ignore
+        file = post.image_url.split('/')[-1]
+        filename = imgFolder / file
+        filename.unlink()
     return 'ok'

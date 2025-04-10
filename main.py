@@ -16,7 +16,7 @@ models.Base.metadata.create_all(bind=engine)
 
 app.mount('/src/images', StaticFiles(directory='src/images'), name='images')
 
-origins = ['http://127.0.0.1:5173', 'http://localhost:4173']
+origins = ['http://127.0.0.1:5173', 'http://127.0.0.1:5174', 'http://127.0.0.1:4173']
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,

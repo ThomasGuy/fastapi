@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 
 from src.auth.oauth2 import get_current_user
 from src.database import db_post, get_db
-from src.schemas import PostBase, PostDisplay, UserAuth
+from src.schemas import Path, PostBase, PostDisplay, UserAuth
 
 router = APIRouter(prefix='/post', tags=['post'])
 
@@ -26,7 +26,6 @@ def create_post(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail='parameter image_url_type can only take values "absolute" or "relative"',
         )
-    # request = {'key': {'user_id': current_user.public_id}}
     return db_post.create_post(request, db)
 
 
@@ -35,7 +34,7 @@ def get_all(db: Session = Depends(get_db)):  # noqa: B008
     return db_post.get_all(db)
 
 
-@router.post('/image')
+@router.post('/image', response_model=Path)
 def upload_file(
     image: UploadFile = File(...),  # noqa: B008
     current_user: UserAuth = Depends(get_current_user),  # noqa: B008

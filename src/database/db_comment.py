@@ -20,4 +20,5 @@ def create_comment(request: CommentBase, db: Session):
 
 
 def get_all(post_id: int, db: Session):
-    return db.query(Comment).filter(Comment.post_id == post_id).all()
+    data = db.query(Comment).filter(Comment.post_id == post_id).all()
+    return sorted(data, key=lambda c: c.timestamp)  # type: ignore

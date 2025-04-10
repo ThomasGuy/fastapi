@@ -1,6 +1,6 @@
 from .sch_auth import UserAuth
 from .sch_comment import CommentBase, CommentDisplay
-from .sch_post import PostBase, PostDisplay
+from .sch_post import Path, PostBase, PostDisplay
 from .sch_user import UserBase, UserDisplay
 
 __all__ = [
@@ -11,4 +11,5 @@ __all__ = [
     'UserAuth',
     'CommentBase',
     'CommentDisplay',
+    'Path',
 ]
