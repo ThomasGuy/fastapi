@@ -26,10 +26,10 @@ def login(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f'user with password {request.password} not valid',
         )
-    acces_token = create_access_token(data={'username': user.username})
+    access_token = create_access_token(data={'username': user.username})
 
     return {
-        'access_token': acces_token,
+        'access_token': access_token,
         'token_type': 'bearer',
         'user_id': user.public_id,
         'username': user.username,
