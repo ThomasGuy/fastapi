@@ -1,6 +1,8 @@
+import os
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 
+from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
@@ -8,9 +10,12 @@ from sqlalchemy.orm import Session
 
 from src.database import db_user, get_db
 
+load_dotenv()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='login')
 
-SECRET_KEY = 'caace13e8ab547ded61d7a1fd8de8a55ba5efe346869016501efd6110dac2769'
+key = os.getenv('SECRET_KEY')
+
+SECRET_KEY = key if key else ''
 ALGORITHM = 'HS256'
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

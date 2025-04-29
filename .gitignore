@@ -3,6 +3,7 @@
 
 # enviroments
 .venv
+.env
 
 # images
 src/images/*.*
