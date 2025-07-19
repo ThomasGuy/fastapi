@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 
 # SQLALCHEMY_DATABASE_URL = 'sqlite:///./instagram.db'
 
-CONN = 'postgresql+psycopg2://bella:61512@localhost:5432/instagramdb'
+CONN = "postgresql+psycopg2://bo:61512@localhost:5432/instagramdb"
 
 engine = create_engine(CONN)
 
@@ -22,4 +22,4 @@ def get_db():
         db.close()
 
 
-__all__ = ['engine', 'get_db', 'Base']
+__all__ = ["engine", "get_db", "Base"]
