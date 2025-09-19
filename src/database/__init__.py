@@ -1,11 +1,16 @@
+import os
+
 import psycopg2  # noqa: F401
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
+load_dotenv()
+
 # SQLALCHEMY_DATABASE_URL = 'sqlite:///./instagram.db'
 
-CONN = 'postgresql+psycopg2://bella:61512@localhost:5432/instagramdb'
+CONN: str | None = os.getenv("DB_CONNECTION")
 
 engine = create_engine(CONN)
 
@@ -22,4 +27,4 @@ def get_db():
         db.close()
 
 
-__all__ = ['engine', 'get_db', 'Base']
+__all__ = ["engine", "get_db", "Base"]
