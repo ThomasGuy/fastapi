@@ -3,10 +3,10 @@
 
 # enviroments
 .venv
-.env
+# .env
 
 # images
-src/images/**/*.*
+# src/images/**/*.*
 
 # database
 *.db
