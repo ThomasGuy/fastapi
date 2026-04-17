@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime
 from typing import List
 
@@ -8,7 +9,7 @@ class PostBase(BaseModel):
     image_url: str
     image_url_type: str
     caption: str
-    user_id: str
+    user_id: uuid.UUID
 
 
 class User(BaseModel):

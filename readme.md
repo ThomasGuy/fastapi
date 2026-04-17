@@ -4,7 +4,7 @@ An api in python mimicing an Instagram clone
 
 use with <https://github.com/ThomasGuy/react-ui.git>
 
-### add a .env file
+## add a .env file
 
 for the 'SECRET_KEY' and 'DB_CONNECTION'
 

@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 
 from src.database.models import Comment
 from src.schemas.sch_comment import CommentBase
+from sqlalchemy.dialects.postgresql import UUID
 
 
 def create_comment(request: CommentBase, db: Session):

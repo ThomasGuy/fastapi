@@ -5,11 +5,11 @@ from src.database import Base
 
 
 class Comment(Base):
-    __tablename__ = 'comment'
-    id = Column(Integer, primary_key=True, index=True)
+    __tablename__ = "comment"
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     text = Column(String)
     username = Column(String)
     timestamp = Column(DateTime)
 
-    post_id = Column(Integer, ForeignKey('post.id'))
-    post = relationship('Post', back_populates='comments')
+    post_id = Column(Integer, ForeignKey("post.id"))
+    post = relationship("Post", back_populates="comments")

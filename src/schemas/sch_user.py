@@ -1,3 +1,4 @@
+import uuid
 from typing import List
 
 from pydantic import BaseModel
@@ -18,8 +19,8 @@ class Post(BaseModel):
 
 
 class UserDisplay(BaseModel):
-    id: int
-    public_id: str
+    id: uuid.UUID
+    public_id: uuid.UUID
     username: str
     email: str
     admin: bool
