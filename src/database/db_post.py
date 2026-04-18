@@ -1,8 +1,8 @@
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
 from fastapi import HTTPException, status
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Session
 
 from src.database.models.post import Post
@@ -30,7 +30,7 @@ def get_all(db: Session):
     return sorted(data, key=lambda p: p.timestamp, reverse=True)  # type: ignore
 
 
-def delete_post(id: int, db: Session, user_id: UUID):
+def delete_post(id: int, db: Session, user_id: uuid.UUID):
     post = db.query(Post).filter(Post.id == id).first()
     if not post:
         raise HTTPException(

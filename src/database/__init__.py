@@ -12,6 +12,9 @@ load_dotenv()
 
 CONN: str | None = os.getenv("DB_CONNECTION")
 
+if not CONN:
+    raise ValueError("DB_CONNECTION environment variable is not set")
+
 engine = create_engine(CONN)
 
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
